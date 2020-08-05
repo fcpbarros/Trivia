@@ -1,10 +1,19 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.3"
+
+    /**
+     * Ativar o dataBinding - para isso é necessário ativar o plugin kotlin-kapt
+     */
+
+    dataBinding {
+        enabled = true
+    }
 
     defaultConfig {
         applicationId "com.example.trivia"
