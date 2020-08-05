@@ -1,4 +1,4 @@
-package com.example.trivia
+package com.example.trivia.screen.title
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import com.example.trivia.R
 import com.example.trivia.databinding.TitleFragmentBinding
 
 
