@@ -15,6 +15,10 @@ android {
         enabled = true
     }
 
+    /**
+     * This code fixes the error found in MainActivity.kt with the AppBarConfiguration
+     * The error message was "cannot inline bytecode built with jvm target 1.8..."
+     */
     kotlinOptions {
         jvmTarget = '1.8'
     }

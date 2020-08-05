@@ -15,4 +15,9 @@
         android:name="com.example.trivia.screen.about.AboutFragment"
         android:label="AboutFragment"
         tools:layout="@layout/about_fragment" />
+    <fragment
+        android:id="@+id/rulesFragment"
+        android:name="com.example.trivia.screen.rules.RulesFragment"
+        android:label="RulesFragment"
+        tools:layout="@layout/rules_fragment" />
 </navigation>
