@@ -7,8 +7,6 @@ import androidx.lifecycle.ViewModel
 
 class GameWonViewModel(finalScore: Int) : ViewModel() {
 
-    //finalScore: Int
-    //Creating LiveData for score
     private val _score = MutableLiveData<Int>()
     val score: LiveData<Int>
         get() = _score
@@ -16,7 +14,7 @@ class GameWonViewModel(finalScore: Int) : ViewModel() {
     init {
         _score.value =
             finalScore //Make sure to initialize score’s value to the finalScore you pass into the view model
-        Log.i("ScoreViewModel", "Final score is $_score")
+        Log.i("ScoreViewModel", "Final score is $score")
     }
 
 }

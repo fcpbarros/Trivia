@@ -17,6 +17,8 @@ private lateinit var viewModelFactory: GameWonViewModelFactory
 
 class GameWonFragment : Fragment() {
 
+    private val args: GameWonFragmentArgs by navArgs()
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
@@ -26,11 +28,14 @@ class GameWonFragment : Fragment() {
             container, false
         )
 
+        binding.textView2.text = args.score.toString()
+
         //get Args
-        val gameWonFragmentArgs by navArgs<GameWonFragmentArgs>()
+        //val gameWonFragmentArgs by navArgs<GameWonFragmentArgs>()
+
 
         //create viewModel
-        viewModelFactory = GameWonViewModelFactory(gameWonFragmentArgs.score)
+        viewModelFactory = GameWonViewModelFactory(args.score)
         viewModel = ViewModelProvider(this, viewModelFactory).get(GameWonViewModel::class.java)
 
         //binding.gameWonViewModel = viewModel
@@ -38,6 +43,8 @@ class GameWonFragment : Fragment() {
 
         return binding.root
     }
+
+
 }
 
 
