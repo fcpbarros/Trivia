@@ -99,6 +99,16 @@ class GameFragment : Fragment() {
         )
 
         /**
+         * randomize the questions and display the first question
+         */
+        randomizeQuestions()
+
+        /**
+         * bind the fragment class to the layout
+         */
+        binding.game = this
+
+        /**
          * The questions are being shown
          * Now the next step is to implement the listener to the radioButtons in order to
          * control the logic of the game
