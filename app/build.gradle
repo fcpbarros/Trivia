@@ -60,6 +60,7 @@ dependencies {
      * TODO Adding MaterialLibrary to the project in order to be able to add drawerMenu
      */
     implementation 'com.google.android.material:material:1.1.0'
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
 
 
     testImplementation 'junit:junit:4.12'

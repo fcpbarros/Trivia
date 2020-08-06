@@ -6,8 +6,8 @@
     <data>
 
         <variable
-            name="game"
-            type="com.example.trivia.screen.game.GameFragment" />
+            name="gameViewModel"
+            type="com.example.trivia.screen.game.GameViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -17,7 +17,7 @@
         <TextView
             android:id="@+id/question_text"
             style="@style/question_layout"
-            android:text="@{game.currentQuestion.text}"
+            android:text="@{gameViewModel.currentQuestion.text}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -37,28 +37,28 @@
                 android:id="@+id/answer_one"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@{game.answers[0]}"
+                android:text="@{gameViewModel.currentQuestion.answers[0]}"
                 tools:text="Green" />
 
             <RadioButton
                 android:id="@+id/answer_two"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@{game.answers[1]}"
+                android:text="@{gameViewModel.currentQuestion.answers[1]}"
                 tools:text="Green" />
 
             <RadioButton
                 android:id="@+id/answer_three"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@{game.answers[2]}"
+                android:text="@{gameViewModel.currentQuestion.answers[2]}"
                 tools:text="Green" />
 
             <RadioButton
                 android:id="@+id/answer_four"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@{game.answers[3]}"
+                android:text="@{gameViewModel.currentQuestion.answers[3]}"
                 tools:text="Green" />
         </RadioGroup>
 
