@@ -16,7 +16,7 @@ class GameFragment : Fragment() {
     private lateinit var binding: GameFragmentBinding
 
     /**
-     * Defining the questions
+     * Defining the questions - Moved to the ViewModel
      * Creating the Question class -> In the future I will move this to a separate file
      */
     data class Question(
@@ -28,6 +28,7 @@ class GameFragment : Fragment() {
      * This is just a simple game at the moment so the everything will be hardcoded
      * In a later update the questions will be stored on a SQL Database
      * the first position (index = 0) is always the right answer
+     * Moved to viewModel
      */
     private val questions: MutableList<Question> = mutableListOf(
         Question(
