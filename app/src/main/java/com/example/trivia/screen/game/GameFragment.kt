@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.example.trivia.R
@@ -26,6 +27,7 @@ class GameFragment : Fragment() {
     /**
      * This is just a simple game at the moment so the everything will be hardcoded
      * In a later update the questions will be stored on a SQL Database
+     * the first position (index = 0) is always the right answer
      */
     private val questions: MutableList<Question> = mutableListOf(
         Question(
@@ -113,6 +115,33 @@ class GameFragment : Fragment() {
          * Now the next step is to implement the listener to the radioButtons in order to
          * control the logic of the game
          */
+        binding.questionsRadioGroup.setOnCheckedChangeListener { group, checkedId ->
+            // In case a button is checked
+            if (checkedId != -1) {
+                //defining the right answer
+                var answerIndex = 0 // this line assumes the first radioButton was clicked
+                /**
+                 * The when block detects which button was clicked and gives it the proper Index
+                 */
+                when (checkedId) {
+                    // R.id.answer_one -> answerIndex = 0
+                    R.id.answer_two -> answerIndex = 1
+                    R.id.answer_three -> answerIndex = 2
+                    R.id.answer_four -> answerIndex = 3
+                }
+                //check if selected answer is the right answer (position 0 at "answers")
+                if (answers[answerIndex] == currentQuestion.answers[0]) {
+                    //It is the right answer
+                    Toast.makeText(activity, "Right!", Toast.LENGTH_SHORT).show()
+                    //remove the current question from the list of possible question
+                } else {
+                    //It is the wrong answer
+                    Toast.makeText(activity, "Wrong!", Toast.LENGTH_SHORT).show()
+                }
+
+
+            } //end of if(checkedItem != -1)
+        }   //end of binding.questionsRadioGroup.setOnCheckedChangeListener { group, checkedId ->
 
 
         return binding.root
