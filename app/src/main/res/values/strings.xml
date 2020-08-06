@@ -4,4 +4,5 @@
     <string name="about_game">About</string>
     <string name="Rules_label">Rules</string>
     <string name="check">CHECK!</string>
+    <string name="play_again_text">Play again!</string>
 </resources>
