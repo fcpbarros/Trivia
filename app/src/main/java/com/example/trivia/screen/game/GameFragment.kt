@@ -9,7 +9,9 @@ import android.widget.RadioButton
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.fragment.NavHostFragment
 import com.example.trivia.R
 import com.example.trivia.databinding.GameFragmentBinding
 
@@ -59,12 +61,29 @@ class GameFragment : Fragment() {
         binding.answerButton.setOnClickListener { v: View? ->
             val checkedId = binding.questionsRadioGroup.checkedRadioButtonId
             val radio: RadioButton = binding.questionsRadioGroup.findViewById(checkedId)
-            val toast = Toast.makeText(activity, "noiiiis", Toast.LENGTH_SHORT)
+            val toast = Toast.makeText(activity, "Game Won!", Toast.LENGTH_SHORT)
             viewModel.onAnsweredQuestion(radio.text.toString(), toast)
 
         }
 
+        /**
+         * Observer to watch changes on eventGameFinish
+         */
+        viewModel.eventGameFinish.observe(viewLifecycleOwner, Observer { hasWon ->
+            if (hasWon) {
+                gameFinished()
+                viewModel.onGameFinishComplete()
+            }
+        })
+
+
         return binding.root
+    }
+
+    private fun gameFinished() {
+        val currentScore = viewModel.score.value ?: 0
+        val action = GameFragmentDirections.actionGameFragmentToGameWonFragment(currentScore)
+        NavHostFragment.findNavController(this).navigate(action)
     }
 
 }

@@ -33,6 +33,16 @@ class GameViewModel : ViewModel() {
     val questionIndex: LiveData<Int>
         get() = _questionIndex
 
+    //var score = 0 -> needs to be initialized
+    private var _score = MutableLiveData<Int>() //_score is initialized to null --INTERNAL VERSION
+    val score: LiveData<Int>
+        get() = _score
+
+    //make a LiveData for the win event
+    private val _eventGameFinish = MutableLiveData<Boolean>()
+    val eventGameFinish: LiveData<Boolean>
+        get() = _eventGameFinish
+
     private lateinit var questionsList: MutableList<Question>
     private lateinit var rightAnswer: String
     private lateinit var resps: List<String>
@@ -41,6 +51,8 @@ class GameViewModel : ViewModel() {
         Log.i("GameViewModel", "GameViewModel created!")
         defineQuestion()
         nextQuestion()
+        _score.value = 0
+        _eventGameFinish.value = false
     }
 
 
@@ -59,8 +71,8 @@ class GameViewModel : ViewModel() {
             shuffle(resps)
             _answers.value = resps
             questionsList.removeAt(0)
-
-
+        } else {
+            //game lost!
         }
 
     }
@@ -71,12 +83,31 @@ class GameViewModel : ViewModel() {
     fun onAnsweredQuestion(answerString: String, toast: Toast) {
         //toast.show()
         if (answerString == rightAnswer) {
-            toast.show()
+            _score.value = (score.value)?.plus(1)
+            /**
+             * check the score
+             */
+            if (_score.value == 3) {
+                //Game won!
+                toast.show()
+                _eventGameFinish.value = true
+            } else {
+                nextQuestion()
+            }
+
+        } else {
+            //Wrong answer!
+            nextQuestion()
         }
 
-        //questionsList.removeAt(0)
-        nextQuestion()
+    }
 
+    /**
+     * onGameFinishedComplete
+     */
+
+    fun onGameFinishComplete() {
+        _eventGameFinish.value = false
     }
 
     /**
