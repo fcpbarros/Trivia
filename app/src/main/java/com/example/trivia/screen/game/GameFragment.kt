@@ -98,8 +98,33 @@ class GameFragment : Fragment() {
             , false
         )
 
+        /**
+         * The questions are being shown
+         * Now the next step is to implement the listener to the radioButtons in order to
+         * control the logic of the game
+         */
 
 
         return binding.root
     }
+
+    /**
+     * Method to randomize the questions
+     */
+    private fun randomizeQuestions() {
+        questions.shuffle()
+        questionIndex = 0
+        showQuestion()
+    }
+
+    private fun showQuestion() {
+        //get the first question located at question index
+        currentQuestion = questions[questionIndex]
+        answers =
+            currentQuestion.answers.toMutableList() //copies the answers to a MutableList in order to randomize it
+        //randomizing the answers
+        answers.shuffle()
+    }
+
+
 }

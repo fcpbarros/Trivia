@@ -17,6 +17,7 @@
         <TextView
             android:id="@+id/question_text"
             style="@style/question_layout"
+            android:text="@{game.currentQuestion.text}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -36,25 +37,25 @@
                 android:id="@+id/answer_one"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="RadioButton" />
+                android:text="@{game.answers[0]}" />
 
             <RadioButton
                 android:id="@+id/answer_two"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="RadioButton" />
+                android:text="@{game.answers[1]}" />
 
             <RadioButton
                 android:id="@+id/answer_three"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="RadioButton" />
+                android:text="@{game.answers[2]}" />
 
             <RadioButton
                 android:id="@+id/answer_four"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="RadioButton" />
+                android:text="@{game.answers[3]}" />
         </RadioGroup>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
