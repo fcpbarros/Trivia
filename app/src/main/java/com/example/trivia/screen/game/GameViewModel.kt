@@ -1,7 +1,6 @@
 package com.example.trivia.screen.game
 
 import android.util.Log
-import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -38,10 +37,20 @@ class GameViewModel : ViewModel() {
     val score: LiveData<Int>
         get() = _score
 
-    //make a LiveData for the win event
+    //make a LiveData for the finish event
     private val _eventGameFinish = MutableLiveData<Boolean>()
     val eventGameFinish: LiveData<Boolean>
         get() = _eventGameFinish
+
+    //make a LiveData for the win event
+    private val _eventGameWin = MutableLiveData<Boolean>()
+    val eventGameWin: LiveData<Boolean>
+        get() = _eventGameWin
+
+    //make a LiveData for the lost event
+    private val _eventGameLost = MutableLiveData<Boolean>()
+    val eventGameLost: LiveData<Boolean>
+        get() = _eventGameLost
 
     private lateinit var questionsList: MutableList<Question>
     private lateinit var rightAnswer: String
@@ -53,6 +62,8 @@ class GameViewModel : ViewModel() {
         nextQuestion()
         _score.value = 0
         _eventGameFinish.value = false
+        _eventGameLost.value = false
+        _eventGameWin.value = false
     }
 
 
@@ -72,25 +83,24 @@ class GameViewModel : ViewModel() {
             _answers.value = resps
             questionsList.removeAt(0)
         } else {
-            //game lost!
+            //Here the user loses the game because there are no more questions
+            _eventGameLost.value = true
         }
-
     }
 
     /**
      * Method to check answers
      */
-    fun onAnsweredQuestion(answerString: String, toast: Toast) {
+    fun onAnsweredQuestion(answerString: String) {
         //toast.show()
         if (answerString == rightAnswer) {
             _score.value = (score.value)?.plus(1)
             /**
              * check the score
              */
-            if (_score.value == 3) {
+            if (_score.value == 10) {
                 //Game won!
-                toast.show()
-                _eventGameFinish.value = true
+                _eventGameWin.value = true
             } else {
                 nextQuestion()
             }
@@ -103,11 +113,12 @@ class GameViewModel : ViewModel() {
     }
 
     /**
-     * onGameFinishedComplete
+     * onGameFinishedComplete - This method resets the game
      */
-
     fun onGameFinishComplete() {
-        _eventGameFinish.value = false
+        // These lines reset the game
+        _eventGameWin.value = false
+        _eventGameLost.value = false
     }
 
     /**

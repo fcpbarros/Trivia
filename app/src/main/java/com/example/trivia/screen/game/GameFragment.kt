@@ -62,16 +62,25 @@ class GameFragment : Fragment() {
             val checkedId = binding.questionsRadioGroup.checkedRadioButtonId
             val radio: RadioButton = binding.questionsRadioGroup.findViewById(checkedId)
             val toast = Toast.makeText(activity, "Game Won!", Toast.LENGTH_SHORT)
-            viewModel.onAnsweredQuestion(radio.text.toString(), toast)
+            viewModel.onAnsweredQuestion(radio.text.toString())
 
         }
 
         /**
-         * Observer to watch changes on eventGameFinish
+         * Observer to watch changes on eventGameWin
          */
-        viewModel.eventGameFinish.observe(viewLifecycleOwner, Observer { hasWon ->
+        viewModel.eventGameWin.observe(viewLifecycleOwner, Observer { hasWon ->
             if (hasWon) {
-                gameFinished()
+                gameWon()
+                viewModel.onGameFinishComplete()
+            }
+        })
+        /**
+         * Observer to watch changes on eventGameLost
+         */
+        viewModel.eventGameLost.observe(viewLifecycleOwner, Observer { hasLost ->
+            if (hasLost) {
+                gameLost()
                 viewModel.onGameFinishComplete()
             }
         })
@@ -80,9 +89,21 @@ class GameFragment : Fragment() {
         return binding.root
     }
 
-    private fun gameFinished() {
+    /**
+     * GameWon
+     */
+    private fun gameWon() {
         val currentScore = viewModel.score.value ?: 0
         val action = GameFragmentDirections.actionGameFragmentToGameWonFragment(currentScore)
+        NavHostFragment.findNavController(this).navigate(action)
+    }
+
+    /**
+     * GameLost
+     */
+    private fun gameLost() {
+        val currentScore = viewModel.score.value ?: 0
+        val action = GameFragmentDirections.actionGameFragmentToGameLostFragment(currentScore)
         NavHostFragment.findNavController(this).navigate(action)
     }
 

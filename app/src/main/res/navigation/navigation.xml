@@ -58,5 +58,8 @@
             android:name="score"
             android:defaultValue="0"
             app:argType="integer" />
+        <action
+            android:id="@+id/restart_Lost"
+            app:destination="@id/titleFragment" />
     </fragment>
 </navigation>
