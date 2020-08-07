@@ -42,7 +42,7 @@ class GameWonFragment : Fragment() {
         /**
          * Observer to watch the variable _eventPlayAgain located inside the viewmodel ( GameWonViewModel )
          */
-        viewModel.eventPlayAgain.observe(this, Observer { playAgain ->
+        viewModel.eventPlayAgain.observe(viewLifecycleOwner, Observer { playAgain ->
             if (playAgain) {
                 findNavController().navigate(GameWonFragmentDirections.restart())
                 viewModel.onPlayAgainFinish()

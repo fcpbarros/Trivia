@@ -33,6 +33,9 @@
             android:id="@+id/action_gameFragment_to_gameWonFragment"
             app:destination="@id/gameWonFragment"
             app:launchSingleTop="true" />
+        <action
+            android:id="@+id/action_gameFragment_to_gameLostFragment"
+            app:destination="@id/gameLostFragment" />
     </fragment>
     <fragment
         android:id="@+id/gameWonFragment"
@@ -46,5 +49,14 @@
         <action
             android:id="@+id/restart"
             app:destination="@id/titleFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/gameLostFragment"
+        android:name="com.example.trivia.screen.gamelost.GameLostFragment"
+        android:label="GameLostFragment">
+        <argument
+            android:name="score"
+            android:defaultValue="0"
+            app:argType="integer" />
     </fragment>
 </navigation>
