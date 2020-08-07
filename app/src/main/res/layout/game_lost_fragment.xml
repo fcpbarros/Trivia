@@ -15,24 +15,24 @@
         android:layout_height="match_parent">
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/score_textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Game Lost!"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/play_again_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="@{() -> gameLostViewModel.onPlayAgain() }"
-            android:text="Button"
+            android:text="@string/play_again_text"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView2" />
+            app:layout_constraintTop_toBottomOf="@+id/score_textView" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

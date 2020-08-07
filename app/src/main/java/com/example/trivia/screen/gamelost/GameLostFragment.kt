@@ -1,9 +1,9 @@
 package com.example.trivia.screen.gamelost
 
+import android.content.Intent
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
+import androidx.core.app.ShareCompat
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -32,7 +32,7 @@ class GameLostFragment : Fragment() {
             container, false
         )
 
-        binding.textView2.text = args.score.toString()
+        binding.scoreTextView.text = args.score.toString()
         /**
          * Code to create the viewModel with the aid of the viewModelFactory
          */
@@ -50,6 +50,49 @@ class GameLostFragment : Fragment() {
             }
         })
 
+        //let the system know that there is an OptionsMenu
+        setHasOptionsMenu(true)
         return binding.root
     }
+
+    /**
+     * Code to create and use the optionsMenu
+     */
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.share_menu, menu)
+        if (null == getShareIntent().resolveActivity(requireActivity().packageManager)) {
+            // hide the menu item if it doesn't resolve
+            menu.findItem(R.id.share)?.isVisible = false
+        }
+    }
+
+    /**
+     * Code to handle the selected item
+     */
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.share -> shareLoss()
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+    /**
+     * Code to create the intent
+     */
+    private fun getShareIntent(): Intent {
+        val args = GameLostFragmentArgs.fromBundle(requireArguments())
+        return ShareCompat.IntentBuilder.from(requireActivity())
+            .setText(getString(R.string.share_loss_text, args.score))
+            .setType("text/plain")
+            .intent
+    }
+
+    /**
+     * Sharing happens here
+     */
+    private fun shareLoss() {
+        startActivity(getShareIntent())
+    }
+
 }
