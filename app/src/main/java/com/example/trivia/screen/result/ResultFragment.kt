@@ -65,10 +65,11 @@ class ResultFragment : Fragment() {
                 message = getString(R.string.share_text_lost, "lost", viewModel.score.value)
                 binding.scoreTextView.text = message
             }
+            setHasOptionsMenu(gameResult)
         })
 
         //let the system know that there is an OptionsMenu
-        setHasOptionsMenu(true)
+        //setHasOptionsMenu(true)
         return binding.root
     }
 
