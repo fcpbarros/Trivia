@@ -38,6 +38,7 @@
 
             <RadioButton
                 android:id="@+id/answer_one"
+                android:checked="true"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@{gameViewModel.answers[0]}"

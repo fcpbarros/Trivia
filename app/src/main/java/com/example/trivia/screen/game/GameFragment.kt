@@ -9,6 +9,7 @@ import android.widget.RadioButton
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.NavHostFragment
@@ -69,21 +70,21 @@ class GameFragment : Fragment() {
         /**
          * Observer to watch changes on eventGameWin
          */
-        viewModel.eventGameWin.observe(viewLifecycleOwner, Observer { hasWon ->
+        viewModel.eventGameFinish.observe(viewLifecycleOwner, Observer { hasWon ->
             if (hasWon) {
-                gameWon()
+                gameFinished(viewModel.eventGameResult)
                 viewModel.onGameFinishComplete()
             }
         })
         /**
          * Observer to watch changes on eventGameLost
          */
-        viewModel.eventGameLost.observe(viewLifecycleOwner, Observer { hasLost ->
-            if (hasLost) {
-                gameLost()
-                viewModel.onGameFinishComplete()
-            }
-        })
+//        viewModel.eventGameLost.observe(viewLifecycleOwner, Observer { hasLost ->
+//            if (hasLost) {
+//                gameFinished(viewModel.eventGameLost)
+//                viewModel.onGameFinishComplete()
+//            }
+//        })
 
 
         return binding.root
@@ -92,19 +93,27 @@ class GameFragment : Fragment() {
     /**
      * GameWon
      */
-    private fun gameWon() {
+    private fun gameFinished(endResult: LiveData<Boolean>) {
         val currentScore = viewModel.score.value ?: 0
-        val action = GameFragmentDirections.actionGameFragmentToGameWonFragment(currentScore)
+        val currentResult = viewModel.eventGameResult.value ?: false
+        //val action = GameFragmentDirections.actionGameFragmentToGameWonFragment(currentScore)
+        /**
+         * In case user loses the game _eventGameResult = false
+         */
+        val action = GameFragmentDirections.actionGameFragmentToResultFragment(
+            currentScore,
+            currentResult
+        ) //this may cause problem
         NavHostFragment.findNavController(this).navigate(action)
     }
 
     /**
      * GameLost
      */
-    private fun gameLost() {
-        val currentScore = viewModel.score.value ?: 0
-        val action = GameFragmentDirections.actionGameFragmentToGameLostFragment(currentScore)
-        NavHostFragment.findNavController(this).navigate(action)
-    }
+//    private fun gameLost() {
+//        val currentScore = viewModel.score.value ?: 0
+//        val action = GameFragmentDirections.actionGameFragmentToGameLostFragment(currentScore)
+//        NavHostFragment.findNavController(this).navigate(action)
+//    }
 
 }

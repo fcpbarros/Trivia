@@ -43,14 +43,10 @@ class GameViewModel : ViewModel() {
         get() = _eventGameFinish
 
     //make a LiveData for the win event
-    private val _eventGameWin = MutableLiveData<Boolean>()
-    val eventGameWin: LiveData<Boolean>
-        get() = _eventGameWin
+    private val _eventGameResult = MutableLiveData<Boolean>()
+    val eventGameResult: LiveData<Boolean>
+        get() = _eventGameResult
 
-    //make a LiveData for the lost event
-    private val _eventGameLost = MutableLiveData<Boolean>()
-    val eventGameLost: LiveData<Boolean>
-        get() = _eventGameLost
 
     private lateinit var questionsList: MutableList<Question>
     private lateinit var rightAnswer: String
@@ -62,8 +58,7 @@ class GameViewModel : ViewModel() {
         nextQuestion()
         _score.value = 0
         _eventGameFinish.value = false
-        _eventGameLost.value = false
-        _eventGameWin.value = false
+        _eventGameResult.value = false
     }
 
 
@@ -84,7 +79,10 @@ class GameViewModel : ViewModel() {
             questionsList.removeAt(0)
         } else {
             //Here the user loses the game because there are no more questions
-            _eventGameLost.value = true
+            /**
+             * In case user loses the game _eventGameResult = false
+             */
+            _eventGameFinish.value = true
         }
     }
 
@@ -98,9 +96,10 @@ class GameViewModel : ViewModel() {
             /**
              * check the score
              */
-            if (_score.value == 10) {
+            if (_score.value == 5) {
                 //Game won!
-                _eventGameWin.value = true
+                _eventGameResult.value = true
+                _eventGameFinish.value = true
             } else {
                 nextQuestion()
             }
@@ -117,8 +116,9 @@ class GameViewModel : ViewModel() {
      */
     fun onGameFinishComplete() {
         // These lines reset the game
-        _eventGameWin.value = false
-        _eventGameLost.value = false
+        _eventGameResult.value = false
+        //_eventGameLost.value = false
+        _eventGameFinish.value = false
     }
 
     /**

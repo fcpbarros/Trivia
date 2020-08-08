@@ -6,6 +6,9 @@
     <string name="check">CHECK!</string>
     <string name="play_again_text">Play again!</string>
     <string name="share_label">Share</string>
-    <string name="share_loss_text">You have lost the game!\nYour score was %1$d correct questions!\nTry again!!</string>
-    <string name="share_win_text">Congratulations!\nYou have won the game!\nYour score was %1$d correct questions!\nGreat work!!</string>
+    <string name="share_text_win">You have %1$s the game!\nYour score was %2$d correct questions!
+                                  \nGreat Work!</string>
+    <string name="share_text_lost">You have %1$s the game!\nYour score was %2$d correct questions!
+                                  \nTry Again!</string>
+
 </resources>
