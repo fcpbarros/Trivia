@@ -31,8 +31,6 @@ class GameLostFragment : Fragment() {
             inflater, R.layout.game_lost_fragment,
             container, false
         )
-
-        binding.scoreTextView.text = args.score.toString()
         /**
          * Code to create the viewModel with the aid of the viewModelFactory
          */
@@ -49,12 +47,18 @@ class GameLostFragment : Fragment() {
                 viewModel.onPlayAgainFinish()
             }
         })
+        /**
+         * Display the score on the screen
+         */
+        viewModel.score.observe(viewLifecycleOwner, Observer { newScore ->
+            binding.scoreTextView.text = args.score.toString()
+        })
+        //binding.scoreTextView.text = args.score.toString()
 
         //let the system know that there is an OptionsMenu
-        setHasOptionsMenu(true)
+        //setHasOptionsMenu(true)
         return binding.root
     }
-
     /**
      * Code to create and use the optionsMenu
      */
@@ -66,7 +70,6 @@ class GameLostFragment : Fragment() {
             menu.findItem(R.id.share)?.isVisible = false
         }
     }
-
     /**
      * Code to handle the selected item
      */
@@ -76,7 +79,6 @@ class GameLostFragment : Fragment() {
         }
         return super.onOptionsItemSelected(item)
     }
-
     /**
      * Code to create the intent
      */
@@ -87,7 +89,6 @@ class GameLostFragment : Fragment() {
             .setType("text/plain")
             .intent
     }
-
     /**
      * Sharing happens here
      */

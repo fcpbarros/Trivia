@@ -17,8 +17,7 @@ class GameLostViewModel(finalScore: Int) : ViewModel() {
         get() = _eventPlayAgain
 
     init {
-        _score.value =
-            finalScore //Make sure to initialize score’s value to the finalScore you pass into the view model
+        _score.value = finalScore //Make sure to initialize score’s value
         Log.i("ScoreViewModel", "Final score is $score")
     }
 
