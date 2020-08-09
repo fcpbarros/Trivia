@@ -27,7 +27,7 @@ class ResultViewModel(finalScore: Int, resultBoolean: Boolean) : ViewModel() {
 
     }
 
-    fun checkResult(resultBoolean: Boolean) {
+    private fun checkResult(resultBoolean: Boolean) {
         /**
          * In case user loses the game resultBoolean = false
          */

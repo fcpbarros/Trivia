@@ -75,6 +75,12 @@ class GameFragment : Fragment() {
             binding.scoreCount.text = updateScore.toString()
 
         })
+        /**
+         * Observer to watch the score and display its value on the screen
+         */
+        viewModel.score.observe(viewLifecycleOwner, Observer {
+
+        })
 
 
         return binding.root
