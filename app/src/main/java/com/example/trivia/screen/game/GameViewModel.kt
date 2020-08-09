@@ -96,7 +96,7 @@ class GameViewModel : ViewModel() {
             /**
              * check the score
              */
-            if (_score.value == 5) {
+            if (_score.value!! >= 5) {
                 //Game won!
                 _eventGameResult.value = true
                 _eventGameFinish.value = true
