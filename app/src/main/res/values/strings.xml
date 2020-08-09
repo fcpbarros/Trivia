@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">Trivia</string>
+    <string name="play">PLAY!</string>
+    <string name="about_game">About</string>
+    <string name="Rules_label">Rules</string>
+    <string name="check">CHECK!</string>
+    <string name="play_again_text">Play again!</string>
+    <string name="share_label">Share</string>
+    <string name="share_text_win">You have %1$s the game!\nYour score was %2$d correct questions!
+                                  \nGreat Work!</string>
+    <string name="share_text_lost">You have %1$s the game!\nYour score was %2$d correct questions!
+                                  \nTry Again!</string>
+
 </resources>

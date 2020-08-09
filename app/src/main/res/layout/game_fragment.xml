@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="gameViewModel"
+            type="com.example.trivia.screen.game.GameViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/question_text"
+            style="@style/question_layout"
+            android:text="@{gameViewModel.currentQuestion}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.411"
+            tools:text="A pergunta aparece aqui" />
+
+        <RadioGroup
+            android:id="@+id/questions_radioGroup"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/question_text"
+            app:layout_constraintVertical_bias="0.29">
+
+            <RadioButton
+                android:id="@+id/answer_one"
+                android:checked="true"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{gameViewModel.answers[0]}"
+                tools:text="Green" />
+
+            <RadioButton
+                android:id="@+id/answer_two"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{gameViewModel.answers[1]}"
+                tools:text="Green" />
+
+            <RadioButton
+                android:id="@+id/answer_three"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{gameViewModel.answers[2]}"
+                tools:text="Green" />
+
+            <RadioButton
+                android:id="@+id/answer_four"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{gameViewModel.answers[3]}"
+                tools:text="Green" />
+        </RadioGroup>
+
+        <Button
+            android:id="@+id/answer_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/check"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/questions_radioGroup" />
+
+        <TextView
+            android:id="@+id/score_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@+id/question_text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
