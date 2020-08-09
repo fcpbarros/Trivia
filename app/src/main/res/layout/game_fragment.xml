@@ -20,6 +20,7 @@
             style="@style/question_layout"
             android:gravity="center_horizontal"
             android:text="@{gameViewModel.currentQuestion}"
+            android:textColor="@color/text_color"
             android:textSize="24sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -47,6 +48,8 @@
                 android:layout_margin="5dp"
                 android:checked="true"
                 android:text="@{gameViewModel.answers[0]}"
+                android:textColor="@color/text_color"
+                app:useMaterialThemeColors="false"
                 tools:text="Green" />
 
             <RadioButton
@@ -55,6 +58,8 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:text="@{gameViewModel.answers[1]}"
+                android:textColor="@color/text_color"
+                app:useMaterialThemeColors="false"
                 tools:text="Green" />
 
             <RadioButton
@@ -63,6 +68,8 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:text="@{gameViewModel.answers[2]}"
+                android:textColor="@color/text_color"
+                app:useMaterialThemeColors="false"
                 tools:text="Green" />
 
             <RadioButton
@@ -71,6 +78,8 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:text="@{gameViewModel.answers[3]}"
+                android:textColor="@color/text_color"
+                app:useMaterialThemeColors="false"
                 tools:text="Green" />
         </RadioGroup>
 
