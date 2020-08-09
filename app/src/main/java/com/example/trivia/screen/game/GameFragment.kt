@@ -40,7 +40,6 @@ class GameFragment : Fragment() {
             inflater, R.layout.game_fragment, container
             , false
         )
-
         /**
          * Methods for setting the viewModel
          */
@@ -48,17 +47,11 @@ class GameFragment : Fragment() {
         viewModel = ViewModelProviders.of(this).get(GameViewModel::class.java)
         binding.gameViewModel = viewModel
         binding.lifecycleOwner = this
-
         /**
          * The questions are being shown
          * Now the next step is to implement the listener to the check button in order to
          * control the logic of the game -> Moved to the viewModel
          */
-//        binding.questionsRadioGroup.setOnCheckedChangeListener { group, checkedId ->
-//            val toast = Toast.makeText(activity, "Right!", Toast.LENGTH_SHORT)
-//            viewModel.onAnsweredQuestion(checkedId,toast)
-//        }
-
         binding.answerButton.setOnClickListener { v: View? ->
             val checkedId = binding.questionsRadioGroup.checkedRadioButtonId
             val radio: RadioButton = binding.questionsRadioGroup.findViewById(checkedId)
@@ -66,7 +59,6 @@ class GameFragment : Fragment() {
             viewModel.onAnsweredQuestion(radio.text.toString())
 
         }
-
         /**
          * Observer to watch changes on eventGameWin
          */
@@ -77,14 +69,12 @@ class GameFragment : Fragment() {
             }
         })
         /**
-         * Observer to watch changes on eventGameLost
+         * Observer to update the scorecount
          */
-//        viewModel.eventGameLost.observe(viewLifecycleOwner, Observer { hasLost ->
-//            if (hasLost) {
-//                gameFinished(viewModel.eventGameLost)
-//                viewModel.onGameFinishComplete()
-//            }
-//        })
+        viewModel.score.observe(viewLifecycleOwner, Observer { updateScore ->
+            binding.scoreCount.text = updateScore.toString()
+
+        })
 
 
         return binding.root
