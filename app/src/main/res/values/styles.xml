@@ -15,4 +15,27 @@
         <item name="android:textSize">@dimen/question_text_size</item>
     </style>
 
+    <style name="button_style">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginBottom">76dp</item>
+        <item name="android:background">#F6F4F4</item>
+        <item name="android:textColor">#441CAE</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="question_style" parent="question_layout">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">#441CAE</item>
+        <item name="android:textSize">40sp</item>
+    </style>
+
+    <style name="text_style">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">#441CAE</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
 </resources>

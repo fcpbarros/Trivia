@@ -9,6 +9,9 @@ android {
     compileSdkVersion 29
     buildToolsVersion "29.0.3"
 
+    /**Use app:srcCompat
+     *
+     */
     android.defaultConfig.vectorDrawables.useSupportLibrary = true
 
     /**

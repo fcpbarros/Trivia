@@ -3,8 +3,10 @@
 
     <item
         android:id="@+id/aboutFragment"
+        android:icon="@drawable/ic_launcher_foreground"
         android:title="@string/about_game" />
     <item
         android:id="@+id/rulesFragment"
+        android:icon="@drawable/ic_baseline_info_24"
         android:title="@string/Rules_label" />
 </menu>
