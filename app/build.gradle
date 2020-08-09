@@ -9,6 +9,8 @@ android {
     compileSdkVersion 29
     buildToolsVersion "29.0.3"
 
+    android.defaultConfig.vectorDrawables.useSupportLibrary = true
+
     /**
      * Ativar o dataBinding - para isso é necessário ativar o plugin kotlin-kapt
      */
