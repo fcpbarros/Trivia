@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.RadioButton
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.LiveData
@@ -76,7 +77,7 @@ class GameFragment : Fragment() {
 
         })
 
-
+        (activity as AppCompatActivity).supportActionBar?.title = getString(R.string.app_name)
         return binding.root
     }
 
