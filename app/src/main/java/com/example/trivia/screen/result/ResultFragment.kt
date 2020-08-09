@@ -3,6 +3,7 @@ package com.example.trivia.screen.result
 import android.content.Intent
 import android.os.Bundle
 import android.view.*
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ShareCompat
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
@@ -70,6 +71,7 @@ class ResultFragment : Fragment() {
 
         //let the system know that there is an OptionsMenu
         //setHasOptionsMenu(true)
+        (activity as AppCompatActivity).supportActionBar?.title = getString(R.string.app_name)
         return binding.root
     }
 

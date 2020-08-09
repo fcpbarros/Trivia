@@ -47,6 +47,8 @@
             app:argType="boolean" />
         <action
             android:id="@+id/restart"
-            app:destination="@id/titleFragment" />
+            app:destination="@id/titleFragment"
+            app:popUpTo="@id/titleFragment"
+            app:popUpToInclusive="true" />
     </fragment>
 </navigation>

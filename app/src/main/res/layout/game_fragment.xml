@@ -20,12 +20,14 @@
             style="@style/question_layout"
             android:gravity="center_horizontal"
             android:text="@{gameViewModel.currentQuestion}"
-            android:textSize="24sp"
+            android:textColor="@color/text_color"
+            android:textSize="30sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.502"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.411"
+            app:layout_constraintVertical_bias="0.317"
             tools:text="A pergunta aparece aqui" />
 
         <RadioGroup
@@ -47,6 +49,8 @@
                 android:layout_margin="5dp"
                 android:checked="true"
                 android:text="@{gameViewModel.answers[0]}"
+                android:textColor="@color/text_color"
+                app:useMaterialThemeColors="false"
                 tools:text="Green" />
 
             <RadioButton
@@ -55,6 +59,8 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:text="@{gameViewModel.answers[1]}"
+                android:textColor="@color/text_color"
+                app:useMaterialThemeColors="false"
                 tools:text="Green" />
 
             <RadioButton
@@ -63,6 +69,8 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:text="@{gameViewModel.answers[2]}"
+                android:textColor="@color/text_color"
+                app:useMaterialThemeColors="false"
                 tools:text="Green" />
 
             <RadioButton
@@ -71,21 +79,23 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:text="@{gameViewModel.answers[3]}"
+                android:textColor="@color/text_color"
+                app:useMaterialThemeColors="false"
                 tools:text="Green" />
         </RadioGroup>
 
         <Button
             android:id="@+id/answer_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/button_style"
+            android:layout_marginBottom="40dp"
             android:text="@string/check"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/questions_radioGroup" />
+            app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
             android:id="@+id/score_count"
+            style="@style/question_style"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toTopOf="@+id/question_text"

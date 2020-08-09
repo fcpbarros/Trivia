@@ -10,5 +10,7 @@
                                   \nGreat Work!</string>
     <string name="share_text_lost">You have %1$s the game!\nYour score was %2$d correct questions!
                                   \nTry Again!</string>
+    <string name="about">About</string>
+    <string name="rules">Rules</string>
 
 </resources>
